@@ -6,7 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./weight.component.css']
 })
 export class WeightComponent implements OnInit {
-
+  legend: boolean = false;
+  showLabels: boolean = true;
+  animations: boolean = true;
+  showYAxisLabel: boolean = true;
+  gradient:boolean = false;
+  xAxis: boolean = true;
+  yAxis: boolean = true;
+  yAxisLabel: string = 'pounds';
+  array: any;
+  timeline: boolean = true;
+  count: number;
   iniWeight: any; //Initial weight
   goalWeight: any;//Goal weight
   changedWeight: any;//current weight
@@ -18,19 +28,31 @@ export class WeightComponent implements OnInit {
   goodValueG: any//checks to make sure the goal weight is valid
   goodValueC: any//checks to make sure the current weight is valid
   goodValueH: any//checks to make sure the Height is valid
-  useI: any//checks if Initial weight was inputed
-  useG: any//checks if goal weight was inputed
-  useC: any//checks if current weight was inputed 
-  useH: any//checks if height was inputed
+  getGoal: boolean//used in the chart, check the goal
+  color: any // chart color
+  weightData: any//chart data 
+  series: any//chart data 
+  yScaleMin: any//chart data
+  yScaleMax:any //chart data
   constructor() { }
 
   
   ngOnInit(): void {
+    this.yScaleMax = 200;
+    this.yScaleMin = 50;
+    this.array = [];
+    for(var i = 0; i < 6; i++){
+      this.array[i] = 0;
+    }
+    this.count = 0;
     this.iniWeight = 0;//the users initial weight
     this.goalWeight = 0;//the goal weight
     this.changedWeight = 0;//The current weight
     this.differ = this.changedWeight - this.iniWeight; //actual weight increase, differ increase
     this.remaining = this.goalWeight - this.changedWeight; //how much fat still need to lose
+    this.color = { 
+      domain: ["#E44D25", "#CFC0BB", "#7aa3e5", "#a8385d", "#aae3f5"]
+    }
   }
 
 
@@ -43,20 +65,19 @@ export class WeightComponent implements OnInit {
   * @return none
   */
   doSubmit(): any{
+    this.count++;
     //goal reach
-    if(this.useI==false || this.useG==false || this.useC==false)
-    {
-      alert("Please input needed values!");
-    }
-    else if(this.useI==true && this.useG==true && this.useC==true){
-    if(this.goodValueI==false || this.goodValueG==false || this.goodValueC==false){
-      alert("Please fix your invalid values");
+    if(this.goodValueI === false || this.goodValueG === false || this.goodValueC === false){
+      alert('Please fix your invalid values');
     }
     else{
-    this.differ=this.changedWeight - this.iniWeight;
-    this.remaining=this.changedWeight-this.goalWeight;
-    document.getElementById("differ").innerText="Weight Difference: " + this.differ;
-    if(this.remaining == 0 ){
+    this.differ = this.changedWeight - this.iniWeight;
+    this.remaining = this.changedWeight - this.goalWeight;
+    //chart data collection
+    this.array[this.count] = this.changedWeight;
+    this.updateChartData();
+    document.getElementById('differ').innerText = 'Weight Difference: ' + this.differ;
+    if(this.remaining === 0 ){
       alert("Congrats, you have reach the goal!");
     }
     //not reach the goal
@@ -79,15 +100,11 @@ export class WeightComponent implements OnInit {
       }
     }
    }
-  }
+
+
   }
 
   BMI(): any{
-    if(this.useC==false || this.useH==false)
-    {
-      alert("Please input the required values!");
-    }
-    else if(this.useC==true && this.useH==true){
     if(this.goodValueC==false || this.goodValueH==false)
     {
       alert("Please fix your invalid values");
@@ -110,7 +127,6 @@ export class WeightComponent implements OnInit {
     }
    }
   }
-  }
   /** updateIni: Saves Initial weight
   * Saves the initial weight given by the user
   * @pre the info entered by the user
@@ -125,13 +141,12 @@ export class WeightComponent implements OnInit {
     document.getElementById("ini").innerText="Initial Weight: Invalid";
      alert("How could you have a weight less than 0? Please Try Again")
      this.goodValueI=false;
-     this.useI=true;
    }
    else{
    this.iniWeight=event.target.value;
    document.getElementById("ini").innerText="Initial Weight: " + this.iniWeight;
    this.goodValueI=true;
-   this.useI=true;
+   this.array[0] = this.iniWeight; // data for chart
    }
  }
 
@@ -150,13 +165,11 @@ export class WeightComponent implements OnInit {
     document.getElementById("goalW").innerText="Goal Weight: Invalid";
     alert("How do you expect to get to a weight below 0...or even at 0? Please Try Again")
      this.goodValueG=false;
-     this.useG=true;
    }
    else{
    this.goalWeight=event.target.value;
    document.getElementById("goalW").innerText="Goal Weight: " + this.goalWeight;
    this.goodValueG=true;
-   this.useG=true;
    }
  }
 
@@ -174,13 +187,11 @@ export class WeightComponent implements OnInit {
     document.getElementById("currentW").innerText="Current Weight: Invalid";
     alert("How did you manage to get a negative weight your clearly lying? Please Try Again")
      this.goodValueC=false;
-     this.useC=true;
    }
    else{
    this.changedWeight=event.target.value;
    document.getElementById("currentW").innerText="Current Weight: " + this.changedWeight;
    this.goodValueC=true;
-   this.useC=true;
    }
  }
 
@@ -190,18 +201,73 @@ export class WeightComponent implements OnInit {
     document.getElementById("height").innerText="Height: Invalid";
     alert("What would being a negative height be? Please Try Again")
      this.goodValueH=false;
-     this.useH=true;
    }
    else
    {
    this.height=event.target.value;
    document.getElementById("height").innerText="Height: " + this.height;
    this.goodValueH=true; 
-   this.useH=true;
    }
  }
+
+  /** updateChartData: 
+   * Update the weight vertical bar chart
+   * @pre Need to update the Vertical Bar Chart
+   * @post Vertical Bar Chart has been updated
+   * @throw none
+   * @return none
+   */
+  updateChartData(){
+    console.log(this.array[0]);
+    console.log(this.array[this.count]);
+    console.log(this.count);
+/*
+    if(this.getGoal){
+      this.weightData = [
+        {name: "Initial Weight", value: this.iniWeight},
+        {name: "Recent Weight", value: this.changedWeight},
+        {name: "Goal Weight", value: this.goalWeight}
+      ];
+    }
+    else{
+      this.weightData = [
+        {name: "Initial Weight", value: this.iniWeight},
+        {name: "Goal Weight", value: this.goalWeight}
+      ];
+    }
+  }*/
+  this.weightData = [{
+    'name': 'your weight change',
+    'series' : [
+    {
+    'name': 'iniWeight',
+    'value': this.array[0]
+    },
+    {
+      'name': 'current weight 1',
+      'value': this.array[1]
+      },
+      {
+        'name': 'current weight 2',
+        'value': this.array[2]
+        },
+        {
+          'name': 'current weight 3',
+          'value': this.array[3]
+          },
+          {
+            'name': 'current weight 4',
+            'value': this.array[4]
+            },
+            {
+              'name': 'current weight 5',
+              'value': this.array[5]
+              }
+  ]
+}
+  ]
 }
 
-
+}
 
 
