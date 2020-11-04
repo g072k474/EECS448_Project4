@@ -1,1 +1,29 @@
-<p>weight works!</p>
+<app-header></app-header>
+<script src="node_modules/chart.js/Chart.min.js"></script>
+<script src="node_modules/angular-chart.js/dist/angular-chart.smin.js"></script>
+<script src="./Chart.min.js"></script>
+<script src="./angular-chart.min.js"></script>
+<h1>Weight Tracker</h1>
+
+<div class="List">
+    <ul>
+        <p>Initial Weight <input type="number" min="0" (keyup)="updateIni($event)" id="intWeight" size="3" />lb</p>
+        <p>Goal Weight <input type="number" min="0" (keyup)="updateG($event)" id="goalWeight" size="3" />lb</p>
+        <p>Current Weight <input type="number" min="0" (keyup)="updateC($event)" id="weightIn" size="3" />lb</p>
+        <p>Height <input type="number" min="0" (keyup)="updateH($event)" id="heightIn" size="3" />in</p>
+    </ul>
+
+    <button (click)="doSubmit()">Track Weight</button>
+    <button (click)="BMI()">Calculate BMI</button>
+    <div class="Initial" id="ini">Initial Weight: 0</div>
+    <div class="goal" id="goalW">Goal Weight: 0</div>
+    <div class="Current" id="currentW">Current Weight: 0</div>
+    <div class="difference" id="differ">Weight Difference: 0</div>
+    <div class="Height" id="height">Height: 0</div>
+    <div class="Chart" id="chart">
+        <p>Here is the chart</p>
+        <ngx-charts-line-chart [results]="weightData" [scheme]="color" [view]="[500,350]" [gradient]="gradient" [xAxis]="xAxis" [yAxis]="yAxis" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [timeline]="timeline" [showYAxisLabel]="showYAxisLabel" [yAxisLabel]="yAxisLabel"
+            [yScaleMin]="yScaleMin" [yScaleMax]="yScaleMax">
+        </ngx-charts-line-chart>
+    </div>
+</div>
