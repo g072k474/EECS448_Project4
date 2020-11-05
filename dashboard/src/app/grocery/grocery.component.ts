@@ -12,13 +12,7 @@ import { ThrowStmt } from '@angular/compiler';
 
 export class GroceryComponent implements OnInit {
   date: Date; // curent sytem date
-  total_Cost: number = 0; // total cost of the list of groceries
-  //items:  GroceryItemService[]; // array of grocery items
   lists: GroceryListService[];
-  ArrayInputListenner;
-
-  groList1: GroceryListService;
-  groList2: GroceryListService;
   
   /** Constructor: Creates and initilaze the class 
  * @pre None
@@ -41,19 +35,8 @@ export class GroceryComponent implements OnInit {
    */
   ngOnInit(): void {
     this.date = new Date();
-    //this.items = [];
     this.lists = [];
-
-    this.groList1 = new GroceryListService("Grocery 1");
-    this.groList2 = new GroceryListService("Grocery 2");
-
-    this.groList1.add_item("bread", 4.5, "yes", 4, "pain");
-    this.groList1.add_item("oil", 3.2, "no", 1, "huile");
-    this.groList2.add_item("shoes", 30.8, "no", 1, "clothing");
-    this.groList2.add_item("jean", 40.00, "no", 3, "Clothing");
-
-    this.lists.push(this.groList1);
-    this.lists.push(this.groList2);
+    this.hideShowFields(true);
 
     this.lists.forEach((item, index) => {
       this.lists[index].updateCost();
@@ -61,6 +44,14 @@ export class GroceryComponent implements OnInit {
 
   }
 
+/** list_label_edit: this function takes the html inputs and search for a list name
+* to update in the array or grocery lists
+ * @pre The name from the input exists in the array of grocery lists
+ * @post A list name is updates
+ * @param None 
+ * @throws None
+ * @return None
+ */
   list_label_edit(){
     var newName: string = (<HTMLInputElement>document.getElementById("listNameNew")).value;
     var listName: string = (<HTMLInputElement>document.getElementById("listNameOld")).value;
@@ -80,8 +71,17 @@ export class GroceryComponent implements OnInit {
       newName = "";
       (<HTMLInputElement>document.getElementById("listNameNew")).value = "";
       (<HTMLInputElement>document.getElementById("listNameOld")).value = "";
+      this.hideShowFields(true);
   }
 
+/** list_remove: this function takes the html inputs and search for a list name
+* to remove from the array or grocery lists.
+ * @pre The name from the input exists in the array of grocery lists.
+ * @post the list name is removed.
+ * @param None 
+ * @throws None
+ * @return None
+ */
   list_remove(){
     var listName = (<HTMLInputElement>document.getElementById("lisToRemove")).value;
     var found: boolean = false;
@@ -97,8 +97,17 @@ export class GroceryComponent implements OnInit {
 
     listName = "";
     (<HTMLInputElement>document.getElementById("lisToRemove")).value = "";
+    this.hideShowFields(true);
   }
 
+/** list_add: this function takes the html inputs and search for a list name
+* to add to the array or grocery lists.
+ * @pre None
+ * @post a new grocery list is created and added 
+ * @param None 
+ * @throws None
+ * @return None
+ */
   list_add(){
     var listName = (<HTMLInputElement>document.getElementById("listToAdd")).value;
     if(this.validInput("string", "listToAdd")){
@@ -108,10 +117,20 @@ export class GroceryComponent implements OnInit {
 
     listName = "";
     (<HTMLInputElement>document.getElementById("listToAdd")).value = "";
+    this.hideShowFields(true);
   }
-
+  
+/**validInput: This function checks the validity of an HTML input. This function
+ *  gets called in all others where the input is taken form the user interface.
+ * @pre None
+ * @post None
+ * @param {type} the type to check validity of. 
+ * @param {field_selector} the id/class of the HTML input to check.
+ * @throws None
+ * @return None
+ */
   validInput(type:string, field_selector:string):boolean{
-    var val_toCheck, text;
+    var val_toCheck;
     val_toCheck = (<HTMLInputElement>document.getElementById(field_selector)).value;
     var field: string = (<HTMLInputElement>document.getElementById(field_selector)).title;
     if(type === "number"){
@@ -121,7 +140,7 @@ export class GroceryComponent implements OnInit {
       }
      
     }else if(type === "string"){
-      if(val_toCheck.length < 2){
+      if(val_toCheck.length < 1){
         alert("Invalid Input for: " + field);
         return false;
       }
@@ -130,12 +149,7 @@ export class GroceryComponent implements OnInit {
         alert("Invalid Input for: " + field);
         return false;
       }
-    }/*else if(type === "yes/no"){
-      if(val_toCheck != "yes" && val_toCheck != "no"){
-        alert("Invalid Input for: " + field);
-        return false;
-      }
-    }*/
+    }
     return true;
   }
 
@@ -187,7 +201,6 @@ updateCost(){
           alert(listName + " Does not Exist.")
         }
     }
-    
 
     listName = "";
     item_name = "";
@@ -202,7 +215,7 @@ updateCost(){
     (<HTMLInputElement>document.getElementById('itemPrice1')).value = "";
     (<HTMLInputElement>document.getElementById('itemOrganic1')).value = ""; 
     (<HTMLInputElement>document.getElementById('itemQuantity1')).value = "";
-    
+    this.hideShowFields(true);
   }
 
 
@@ -237,6 +250,7 @@ updateCost(){
     this.updateCost();
     (<HTMLInputElement>document.getElementById('listName2')).value = "";
     (<HTMLInputElement>document.getElementById('itemName2')).value = "";
+    this.hideShowFields(true);
   }
 
 /** edit_item: this function searches and item name from the list of groceries and 
@@ -260,7 +274,8 @@ updateCost(){
     if(!found){
       alert(list_name + " Does not Exist.");
     }
-    this.updateCost();  
+    this.updateCost(); 
+    this.hideShowFields(true); 
   }
 
 /** edit: this function takes the input from the user, puts it into variables, then
@@ -314,18 +329,27 @@ updateCost(){
     (<HTMLInputElement>document.getElementById('itemField')).value = "";
     (<HTMLInputElement>document.getElementById('fieldValue')).value = "";
     (<HTMLInputElement>document.getElementById('listName3')).value = "";
+    this.hideShowFields(true);
   }
 
+/**isOrganic: This function is called to change the HTML input type when the field to 
+ *    edit is the one that states wether the grocery item is organic or not
+* @pre None
+* @post None
+* @param None
+* @throws None
+* @return None
+*/  
   isOrganic(){
     var field = (<HTMLInputElement>document.getElementById('itemField')).value;
     var value = (<HTMLInputElement>document.getElementById('fieldValue'));
     if(field == "organic"){
       var op1 = document.createElement("option");
-      op1.value = "yes";
-      op1.innerHTML = "yes";
+      op1.value = "Yes";
+      op1.innerHTML = "Yes";
       var op2 = document.createElement("option");
-      op2.value = "no";
-      op2.innerHTML = "no";
+      op2.value = "No";
+      op2.innerHTML = "No";
       var selector = document.createElement("select");
       selector.id="fieldValue";
       var toReplace = document.getElementById("fieldValue");
@@ -334,12 +358,102 @@ updateCost(){
       selector.appendChild(op1);
       selector.appendChild(op2);
       container.appendChild(selector);
+    }else{
+      var normalInput = document.createElement("input");
+      normalInput.id = "fieldValue";
+      normalInput.type = "text";
+      var toReplace = document.getElementById('fieldValue');
+      var container = document.getElementById('fieldValue').parentNode;
+      container.removeChild(toReplace);
+      container.appendChild(normalInput);
     }
   }
 
-//The part below if for further implementation for Project 4
+/** hideShowFields: This function is used to hide the fieldsets where the user modify
+ *  grocery lists and gorcery items. We only want to show them the input fields according
+ *  to what action the user wants to do.
+* @pre None
+* @post None
+* @param None
+* @throws None
+* @return None
+*/
+  hideShowFields(hide:boolean = true){
+    if(hide){
+      (<HTMLElement>document.getElementById('add-item')).style.visibility= "hidden";
+      (<HTMLElement>document.getElementById('edit-item')).style.visibility= "hidden";
+      (<HTMLElement>document.getElementById('remove-item')).style.visibility= "hidden";
+      (<HTMLElement>document.getElementById('add-list')).style.visibility= "hidden";
+      (<HTMLElement>document.getElementById('edit-list')).style.visibility= "hidden";
+      (<HTMLElement>document.getElementById('remove-list')).style.visibility= "hidden";
+    }else{
+      (<HTMLElement>document.getElementById('add-item')).style.visibility = "visible";
+      (<HTMLElement>document.getElementById('edit-item')).style.visibility= "visible";
+      (<HTMLElement>document.getElementById('remove-item')).style.visibility= "visible";
+      (<HTMLElement>document.getElementById('add-list')).style.visibility= "visible";
+      (<HTMLElement>document.getElementById('edit-list')).style.visibility= "visible";
+      (<HTMLElement>document.getElementById('remove-list')).style.visibility= "visible";
+    }
+  }
 
+/** flipView: this function is used in addition to fieldShowHide() to only show the user
+ *  the fields they edit in order to fulfill the action they want
+* @pre None
+* @post None
+* @param {itemOrList} this parameter specifies wethere we are editing a grocery item or
+*                     a grocery list
+* @throws None
+* @return None
+*/
+  flipView(itemOrList: string = "grocery"){
+    var isItem: boolean = false;
+    var itemActions = (<HTMLInputElement>document.getElementById('item-edit-select')).value;
+    var listActions = (<HTMLInputElement>document.getElementById('grocery-edit-select')).value;
+    var actionScreen = (<HTMLInputElement>document.getElementById('action-screen'));
+    
+    this.hideShowFields(true);
+      
+    if(itemOrList == "item"){
+      isItem = true;
+    }
+    if(itemActions == "Add" && isItem){
+      (<HTMLElement>document.getElementById('add-item')).style.visibility = "visible";
+    }else if (itemActions == "Remove" && isItem){
+      (<HTMLElement>document.getElementById('remove-item')).style.visibility= "visible";
+    }else if (itemActions == "Edit" && isItem){
+      (<HTMLElement>document.getElementById('edit-item')).style.visibility= "visible";
+    }
+
+
+    if(listActions == "Add-G" && !isItem){
+     
+      (<HTMLElement>document.getElementById('add-list')).style.visibility= "visible";
+    }else if (listActions == "Remove-G" && !isItem){
+      (<HTMLElement>document.getElementById('remove-list')).style.visibility= "visible";
+    }else if (listActions == "Change-G" && !isItem){
+      (<HTMLElement>document.getElementById('edit-list')).style.visibility= "visible";
+    }
+    isItem = false;
+    itemActions = " ";
+    listActions = " ";
+    setTimeout(() => {
+      (<HTMLInputElement>document.getElementById('item-edit-select')).value = "default";
+      (<HTMLInputElement>document.getElementById('grocery-edit-select')).value = "default";
+    }, 2000);
+    
+  }
+
+
+/** accOpen: This the function that makes the accordion view possible for the list of 
+ *    grocery lists.
+* @pre None
+* @post None
+* @param None
+* @throws None
+* @return None
+*/ 
  accOpen():void {
+  this.hideShowFields(true);
     var acc = document.getElementsByClassName("accordion");
     var i;
 

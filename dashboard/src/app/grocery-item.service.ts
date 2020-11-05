@@ -10,8 +10,6 @@ export class GroceryItemService {
   organic?:string;
   quantity: number = 1;
 
-
-
   /** Constructor: Creates and initilaze the class 
  * @pre None
  * @post Component class created with all its dependencies

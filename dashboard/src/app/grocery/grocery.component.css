@@ -91,3 +91,21 @@ button:hover{
 button:active{
 	position: relative;
 }
+
+#action-screen{
+	padding: 5% 15%;
+	position: relative;
+}
+
+#action-screen fieldset{
+	position: absolute;
+	top: 2%;
+	left: 3%;
+}
+#edition-selection{
+	display: flex;
+	margin: 3% 20%;
+}
+#edition-selection div{
+	margin: auto;
+}
