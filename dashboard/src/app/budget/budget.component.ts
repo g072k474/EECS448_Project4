@@ -66,7 +66,7 @@ export class BudgetComponent implements OnInit {
    */  
   ngOnInit(): void {
     this.amount = -1;
-    this.income = -1;
+    this.income = 0;
     this.itemp = 0;
     this.categoryList = [];
     this.expenseList = [];
@@ -108,11 +108,11 @@ export class BudgetComponent implements OnInit {
    * @returns None 
    */
   addIncome(event: any){
-    if(event.target.value >= 0){
+    if(event.target.value > 0){
       this.itemp = event.target.value;
     }
     else{
-      this.itemp = -1;
+      this.itemp = 0;
     }
   }
 
@@ -125,17 +125,19 @@ export class BudgetComponent implements OnInit {
    * @returns None 
    */
   updateIncome(val:number){
-    if(val >= 0){
+    if(val > 0){
       this.itemp = 0;
       this.income = +this.income + +val;
       console.log(this.income);
       if(this.percent > 0){
-        this.updateSavings()
+        this.updateSavings();
         this.checkSavings();
       }
       this.updateIncomeData();
     }
     else{
+      this.itemp = 0;
+      this.income = this.income;
       alert('Invalid action!\nYou need to input a positive dollar amount.');
     }
   }
