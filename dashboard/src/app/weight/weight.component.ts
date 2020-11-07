@@ -112,6 +112,13 @@ export class WeightComponent implements OnInit {
   }
   }
 
+   /** BMI: Calculates BMI based off of current weight and height
+  * @pre none
+  * @post gives the user and alert as to where they are in terms of progress 
+  * @param finds the BMI
+  * @throw none
+  * @return none
+  */
   BMI(): any{
     if(this.useC==false || this.useH==false)
     {
@@ -215,6 +222,14 @@ export class WeightComponent implements OnInit {
    }
  }
 
+ /** updateH: saves the height
+  * Saves the goal weight given by the user
+  * @pre the info entered by the user
+  * @post none 
+  * @param saves height 
+  * @throw none
+  * @return none
+  */
  updateH(event: any)
  {
   if(event.target.value<0){
