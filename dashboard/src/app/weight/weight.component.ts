@@ -38,8 +38,8 @@ export class WeightComponent implements OnInit {
 
   
   ngOnInit(): void {
-    this.yScaleMax = 200;
-    this.yScaleMin = 50;
+    this.yScaleMax = 500;
+    this.yScaleMin = 0;
     this.array = [];
     for(var i = 0; i < 6; i++){
       this.array[i] = 0;
@@ -51,7 +51,7 @@ export class WeightComponent implements OnInit {
     this.differ = this.changedWeight - this.iniWeight; //actual weight increase, differ increase
     this.remaining = this.goalWeight - this.changedWeight; //how much fat still need to lose
     this.color = { 
-      domain: ["#E44D25", "#CFC0BB", "#7aa3e5", "#a8385d", "#aae3f5"]
+      domain: ["#173eff", "#CFC0BB", "#E44D25", "#a8385d", "#aae3f5"]
     }
   }
 
@@ -92,7 +92,7 @@ export class WeightComponent implements OnInit {
       }
       else if(this.remaining < 0)
       {
-        alert("You have gone past your goal Congradulations");
+        alert("You have gone past your goal Congratulations");
       }
       else{
         alert("Your weight has not changed.");
@@ -208,6 +208,23 @@ export class WeightComponent implements OnInit {
    }
  }
 
+ /**
+  * Function used to refresh the chart data
+  * @pre The chart data doesn't change when a new weigh in happens
+  * @post Update the chart data when there is a new weigh in
+  * @throw None
+  * @returns an array holding the dynamic new chart data
+  */
+ updateData(){
+   const array = [];
+   for (let i = 0; i<= this.count; i++)
+   array.push({
+     "name":i.toString(),
+     "value": this.array[i]
+   });
+   return array;
+ }
+
   /** updateChartData: 
    * Update the weight vertical bar chart
    * @pre Need to update the Vertical Bar Chart
@@ -235,6 +252,10 @@ export class WeightComponent implements OnInit {
     }
   }*/
   this.weightData = [{
+    'name': 'Your Weight Change',
+    'series' : this.updateData()
+  }];
+  /*this.weightData = [{
     'name': 'your weight change',
     'series' : [
     {
@@ -263,7 +284,7 @@ export class WeightComponent implements OnInit {
               }
   ]
 }
-  ]
+  ]*/
 }
 
 }
