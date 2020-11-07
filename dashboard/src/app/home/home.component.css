@@ -31,9 +31,10 @@ li a:hover {
     opacity: 1;
 }
 
-h6 {
+h5 {
     margin-top: 1rem;
     margin-left: 1.5rem;
+    text-align: center;
 }
 
 /* SOURCE: ku.edu */
@@ -93,6 +94,8 @@ section.box-wrapper {
     display: flex;
     flex-wrap: wrap;
     margin: auto;
+    margin-left: 15rem;
+    margin-right: 10rem;
     box-sizing: border-box;
 }
 .box-title>h4> a:hover {
