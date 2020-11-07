@@ -6,18 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./weight.component.css']
 })
 export class WeightComponent implements OnInit {
-  legend: boolean = false;
-  showLabels: boolean = true;
-  animations: boolean = true;
-  showYAxisLabel: boolean = true;
-  gradient:boolean = false;
-  xAxis: boolean = true;
-  yAxis: boolean = true;
-  yAxisLabel: string = 'pounds';
+  legend: boolean = false; //chart component 
+  showLabels: boolean = true;//chart component 
+  animations: boolean = true;//chart component 
+  showYAxisLabel: boolean = true;//chart component 
+  gradient:boolean = false;//chart component 
+  xAxis: boolean = true;//chart component 
+  yAxis: boolean = true;//chart component 
+  yAxisLabel: string = 'pounds';//chart component 
   array: any; // array for current weight
   array2: any; // array for goal weight 
-  timeline: boolean = true;
-  count: number;
+  timeline: boolean = true; //chart component 
+  count: number; // count the times of click dosubmit()
   iniWeight: any; //Initial weight
   goalWeight: any;//Goal weight
   changedWeight: any;//current weight
@@ -43,11 +43,11 @@ export class WeightComponent implements OnInit {
 
   
   ngOnInit(): void {
-    this.yScaleMax = 500;
-    this.yScaleMin = 0;
-    this.array = [];
-    this.array2 = [];
+    this.yScaleMax = 500; // chart data maximun for domain 
+    this.yScaleMin = 0; // chart data minimun for domain 
     // initialize array
+    this.array = []; 
+    this.array2 = [];
     for(var i = 0; i < 20; i++){
       this.array[i] = 0;
       this.array2[i] = 0;
@@ -194,6 +194,7 @@ export class WeightComponent implements OnInit {
    document.getElementById("goalW").innerText="Goal Weight: " + this.goalWeight;
    this.goodValueG=true;
    this.useG=true;
+   //make array2[0] is first time goalweight input 
    if(this.count == 0){
      this.array2[0] = this.goalWeight;
    }
@@ -276,7 +277,7 @@ export class WeightComponent implements OnInit {
 }
 
   /** updateChartData: 
-   * Update the weight vertical bar chart
+   * Update the weight vertical line chart
    * @pre Need to update the Vertical Bar Chart
    * @post Vertical Bar Chart has been updated
    * @throw none
@@ -301,6 +302,8 @@ export class WeightComponent implements OnInit {
       ];
     }
   }*/
+    
+
   this.weightData = [{
     'name': 'Your Weight Change',
     'series' : this.updateData()
