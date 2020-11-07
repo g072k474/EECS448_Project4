@@ -1,0 +1,157 @@
+ul {
+    list-style-type: none;
+    padding:10px;
+    overflow: hidden;
+    border-style: none;
+    border-width: 40px;
+    border-color: black;
+    text-align: center;
+    background-color: white;
+    margin: 0px;
+}
+    
+li {
+    color: black;
+    float: left;
+    margin: 3px;
+}
+
+li a {
+    color:rgb(0,81,186);
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    padding: 16px 20px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color:rgb(133,137,138);
+    color: white;
+    opacity: 1;
+}
+
+h6 {
+    margin-top: 1rem;
+    margin-left: 1.5rem;
+}
+
+/* SOURCE: ku.edu */
+@media (max-width: 1199px) and (min-width: 960px) {
+    div.box-container {
+        flex-flow: wrap;
+        width: 100%;
+    }
+    div.box {
+        max-width: 44%;
+    }
+    img.img- {
+        max-width: 240px !important;
+    }
+}
+@media (max-width: 959px) and (min-width: 720px) {
+    section.box-wrapper {
+        margin-left: -5%;
+    }
+    div.box {
+        max-width: 33%;
+    }
+    img.img- {
+        max-width: 215px !important;
+    }
+}
+@media (max-width: 719px) and (min-width: 480px) {
+    div.box-container {
+        flex-flow: wrap;
+        width: 100%;
+    }
+    div.box {
+        max-width: 45%;
+    }
+      img.img- {
+        max-width: 197px !important;
+    }
+}
+@media (max-width: 479px) and (min-width: 320px) {
+     div.box-container {
+        flex-flow: wrap;
+        width: 100%;
+        text-align: center;
+        margin: 2px 0 9px 18px;
+    }
+    div.box {
+        max-width: 70%;
+    }
+      img.img- {
+        max-width: 197px !important;
+    }
+    /* section.box-wrapper {
+    } */
+}
+
+section.box-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    box-sizing: border-box;
+}
+.box-title>h4> a:hover {
+    text-decoration: none !important;
+}
+.box-text>p> a:hover {
+    text-decoration: none !important;
+}
+.box-container {
+    flex-grow: 1;
+    display: flex;
+    /* flex-flow: column; */
+}
+.box {
+    color: black;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(133, 137, 138, 0.3);
+    background-clip: border-box;
+    border: 0.1px solid #00000040;
+    margin: 1%;
+    max-width: 30%;
+}
+.box-img {
+    width: 100%;
+}
+img.box-img {
+    max-width: 500px !important;
+    transition: 0.4s ease-in-out;
+    padding: 0;
+}
+  img.box-img:hover {
+      transform: scale(0.9);
+  }
+.box-title > h4 {
+    background-color: rgb(0,81,186);
+    text-align: center;
+    font-size: 20px;
+    line-height: 1.5;
+    /* text-transform: none; */
+    color: #ffffff;
+}
+.box-title> h4> a {
+    text-decoration: none;
+    text-transform: none;
+    color: #ffffff !important;
+    text-align: center;
+}
+.box-text> p>a {
+    text-decoration: none;
+    text-transform: none;
+    color: #131212 !important;
+    text-align: center;
+}
+.box-text {
+    text-align: center;
+    width: 100%;
+}
+.box-title {
+    width: 100%;
+}

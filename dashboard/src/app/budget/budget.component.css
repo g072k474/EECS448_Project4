@@ -1,16 +1,7 @@
-html {
-    background-color:rgb(122, 206, 172);
+h1 {
+    margin-bottom: 2rem; 
 }
 
-h1{
-    border: 3px solid rgb(21, 65, 51);
-    padding: 20px;
-    font-family: "Times New Roman", Times, serif;
-    color: rgb(21, 65, 51);
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 3rem;
-}
 .info{
     align-content: center;
 }
@@ -20,7 +11,7 @@ h1{
     margin-right: auto;
 }
 hr{
-    border: 2px  solid black;
+    border: 1px  solid rgb(0, 81, 186);
     background: black;
 }
 label{
@@ -75,10 +66,10 @@ align-content: center;
     text-align: center;
 }
 .good{
-   color: #478559;
+   color: rgb(0,81,186);
    font-weight: bold; 
 }
 .bad{
-    color: #B00000;
+    color: rgb(232,0,13);
     font-weight: bold;
 }
