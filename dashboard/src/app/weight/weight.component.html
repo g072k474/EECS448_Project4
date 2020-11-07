@@ -16,22 +16,29 @@
     <div class="Current" id="currentW">Current Weight: 0</div>
     <div class="difference" id="differ">Weight Difference: 0</div>
     <div class="Height" id="height">Height: 0</div>
-    <div class="Chart" id="chart">
+    <div class="Chart" id="chart" *ngIf = 'wvalid'>
         <p>Progress of  Your Weight</p>
-        <ngx-charts-line-chart 
-        [results]="weightData" 
-        [scheme]="color" 
-        [view]="[500,350]" 
-        [gradient]="gradient" 
-        [xAxis]="xAxis" 
-        [yAxis]="yAxis" 
-        [legend]="legend" 
-        [timeline]="timeline" 
-        [showYAxisLabel]="showYAxisLabel" 
-        [showXAxisLabel]="false" 
-        [yAxisLabel]="yAxisLabel"
-        [yScaleMin]="yScaleMin" 
-        [yScaleMax]="yScaleMax">
-        </ngx-charts-line-chart>
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-6">
+                <div class="wchart">
+                    <ngx-charts-line-chart 
+                        [results]="weightData" 
+                        [scheme]="color" 
+                        [view]="[500,350]" 
+                        [gradient]="gradient" 
+                        [xAxis]="xAxis" 
+                        [yAxis]="yAxis" 
+                        [legend]="legend" 
+                        [timeline]="timeline" 
+                        [showYAxisLabel]="showYAxisLabel" 
+                        [showXAxisLabel]="false" 
+                        [yAxisLabel]="yAxisLabel"
+                        [yScaleMin]="yScaleMin" 
+                        [yScaleMax]="yScaleMax">
+                    </ngx-charts-line-chart>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

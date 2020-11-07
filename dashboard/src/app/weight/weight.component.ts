@@ -13,7 +13,7 @@ export class WeightComponent implements OnInit {
   gradient:boolean = false;
   xAxis: boolean = true;
   yAxis: boolean = true;
-  yAxisLabel: string = 'pounds';
+  yAxisLabel: string = 'Pounds';
   array: any;
   timeline: boolean = true;
   count: number;
@@ -38,6 +38,7 @@ export class WeightComponent implements OnInit {
   series: any//chart data 
   yScaleMin: any//chart data
   yScaleMax:any //chart data
+  wvalid: boolean // boolean for when to show the chart
   constructor() { }
 
   
@@ -48,6 +49,7 @@ export class WeightComponent implements OnInit {
     for(var i = 0; i < 6; i++){
       this.array[i] = 0;
     }
+    this.wvalid = false;
     this.count = 0;
     this.iniWeight = 0;//the users initial weight
     this.goalWeight = 0;//the goal weight
@@ -257,6 +259,7 @@ export class WeightComponent implements OnInit {
    * @return none
    */
   updateChartData(){
+    this.wvalid = true;
     console.log(this.array[0]);
     console.log(this.array[this.count]);
     console.log(this.count);
