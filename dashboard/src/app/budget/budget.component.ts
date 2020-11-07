@@ -11,35 +11,35 @@ export class BudgetComponent implements OnInit {
 
   // Variable Declarations //
 
-  incomeData: any;
-  expenseData: any;
-  result: Expenses[] = [];
-  categoryList: any;
-  ctemplist:any;
-  tempcList: any;
-  amount: number;
-  income: number;
-  itemp: number
-  ctemp: String;
-  expenseList: any;
-  expense: number;
-  totalexp: number;
-  percent: number;
-  save: number;
-  categoryForm: FormGroup;
-  temp: any;
-  ivalid: boolean;
-  evalid: boolean;
-  svalid: boolean;
-  saved: boolean;
-  exist: boolean;
-  margin: number;
+  incomeData: any; // Used for income data
+  expenseData: any; // Used for expense data
+  result: Expenses[] = []; // Used as medium to refresh the expenseData 
+  categoryList: any; // Used for the list of categories
+  ctemplist:any; // Temp for the catergory list
+  tempcList: any; // Another temp for the category list
+  amount: number; // Used to hold bank amount  
+  income: number; // Used to hold income entry
+  itemp: number; // Temp for an income
+  ctemp: String; // Temp for a category
+  expenseList: any; // List of expenses
+  expense: number; // Used to hold expense entry
+  totalexp: number; // Used to hold total expense
+  percent: number; // Used to hold percentage entry
+  save: number; // Used to hold the amount aimed to saved
+  categoryForm: FormGroup; // Form used to control the input of expenses and their categories
+  temp: any; // Temp used later to hold an object
+  ivalid: boolean; // Boolean for if income is valid
+  evalid: boolean; // Boolean for if expense is valid
+  svalid: boolean; // Boolean for if the save is valid
+  saved: boolean; // Boolean if the user has saved
+  exist: boolean; // Boolean if a category already exists
+  margin: number; // The difference between expense and income
   // Chart Colors
   iColors = {
-    domain: ['#478559', '#0CFF00']
+    domain: ['#478559', '#0CFF00'] // Income chart colors
   }
   eColors = {
-    domain: ['#B00000', '#FF2E00', '#901A00', '#CF3A29', '#6B2115', '#640404', '#9C2A2A' ]
+    domain: ['#B00000', '#FF2E00', '#901A00', '#CF3A29', '#6B2115', '#640404', '#9C2A2A' ] // Expense chart colors
   }
 
 
@@ -65,6 +65,8 @@ export class BudgetComponent implements OnInit {
    * @returns None
    */  
   ngOnInit(): void {
+
+    // Initializations
     this.amount = -1;
     this.income = 0;
     this.itemp = 0;
@@ -129,6 +131,7 @@ export class BudgetComponent implements OnInit {
       this.itemp = 0;
       this.income = +this.income + +val;
       console.log(this.income);
+      // Refresh the statement if the user has saved when an income is entered
       if(this.percent > 0){
         this.updateSavings();
         this.checkSavings();
@@ -168,6 +171,7 @@ export class BudgetComponent implements OnInit {
     this.ctemplist = [];
     for(let item of this.categoryList)
     {
+      // Check to see if the new str (category) exists in the categoryList already
       if(str === item)
       {
         this.exist = true;
@@ -179,6 +183,7 @@ export class BudgetComponent implements OnInit {
         this.ctemplist.push(item);
       }
       this.ctemplist.push(str);
+      // Sort the new category list
       this.categoryList = this.ctemplist.sort();
     }
     else{
@@ -219,12 +224,14 @@ export class BudgetComponent implements OnInit {
       let i = 0;
       let update = false;
       for(let exp in this.expenseList){
+        // If the new expense is an already exisiting expense then add to previous entry
         if(this.categoryForm.value.category === this.expenseList[i][0]){
           this.expenseList[i][1] = +this.expenseList[i][1] + +this.expense;
           update = true;
         }
         i++;
       }
+      // If the new expense is the first of the category then push it to the expense list
       if(update === false){
         let etemp = this.expense
         console.log(this.expenseList);
@@ -234,6 +241,7 @@ export class BudgetComponent implements OnInit {
       this.categoryForm.reset();
       this.tempcList = this.categoryList;
       this.categoryList= [];
+      // Refreshes the categoryList
       for( let tc of this.tempcList)
       {
       this.categoryList.push(tc);
@@ -241,6 +249,7 @@ export class BudgetComponent implements OnInit {
       console.log("expense list array");
       console.log(this.expenseList);
       this.result.length = 0;
+      // Used to help refresh the expense chart when a new expenses is added
       for(let exp of this.expenseList)
       {
         this.temp = Object.assign({name: exp[0], value: +exp[1]}); 
@@ -325,11 +334,13 @@ export class BudgetComponent implements OnInit {
    */
   checkSavings(){
     if(this.save > 0){
+      // Saved amount is equal to income
       if( this.income > 0 && this.totalexp === 0){
         this.margin = this.income;
         this.svalid = true;
         this.saved = true;
       }
+      // Saved amount is equal to the difference between income and expenses and check to see if it meets the saved amount
       else if(this.income > 0 && this.totalexp > 0){
         this.svalid = true;
         this.margin = (this.income - this.totalexp);
@@ -340,6 +351,7 @@ export class BudgetComponent implements OnInit {
           this.saved = false;
         }
       }
+      // Saved amount is not met because there is only expenses
       else if (this.income === 0 && this.totalexp > 0){
         if(this.percent > 0){
           this.margin = (0- this.totalexp);
@@ -370,15 +382,18 @@ export class BudgetComponent implements OnInit {
   updateIncomeData(){
     if(this.amount >= 0){ 
       this.ivalid = true;
+      // Income data is to show both amount and income
       if(this.income > 0 && this.amount > 0){
         this.incomeData = [
           { name: "Bank" , value: +this.amount},
           { name: "Income" , value: +this.income}];
       }
+      // If there is not a bank amount then show just income
       else if( this.amount <= 0 && this.income > 0){
         this.incomeData = [{ name: "Income" , value: +this.income}];
       }
       else{
+      // If there is only the bank amount
         this.incomeData = [
           { name: "Bank" , value: +this.amount}];
       }
@@ -400,6 +415,7 @@ export class BudgetComponent implements OnInit {
    */
   updateExpenseData(){
     this.evalid = true;
+    // Refresh the expenseData when there is an added expense
     this.expenseData = this.result;
     this.expenseData = [...this.expenseData];
     console.log("shown expense chart data");
