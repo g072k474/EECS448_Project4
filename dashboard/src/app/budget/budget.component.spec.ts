@@ -30,7 +30,6 @@ describe('BudgetComponent', () => {
   it('should show amount is 500', () =>{
     spyOn(component, 'updateAmount');
     component.updateAmount(500);
-    console.log(fixture.detectChanges(component.amount === 500));
     expect(component.updateAmount).toHaveBeenCalledWith(500);
   });
 
