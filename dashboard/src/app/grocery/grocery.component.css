@@ -1,20 +1,23 @@
-html {
-    background-color:rgb(122, 206, 172);
+h1 {
+    margin-bottom: 2rem; 
 }
 
-h1{
-    border: 3px solid rgb(21, 65, 51);
-    padding: 20px;
-    font-family: "Times New Roman", Times, serif;
-    color: rgb(21, 65, 51);
+/* p {
     text-align: center;
-    font-weight: bold;
-    margin-bottom: 3rem;
+} */
+
+legend {
+	padding: 7px;
+	background-color: rgb(0, 81, 186);
+	color: white;
+	font-weight: bold;
 }
 
-p {
-    text-align: center;
+input {
+	margin-left: 1rem;
 }
+
+
 .accordion{
 	background-color: #eee;
 	color: #444;
@@ -62,8 +65,10 @@ p {
 }
 
 fieldset{
+	/* border: 2px solid rgb(0, 81, 186); */
 	width: 80%;
-	margin:auto;
+	margin-top: 5px;
+	margin-left: 2rem;
 }
 
 #items-view span{
