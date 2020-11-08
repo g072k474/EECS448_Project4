@@ -27,7 +27,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
     * `npm install @angular/cdk --save`
 
 # Test the application
-1. Run `ng test`
+1. Run the application
+2. Run `ng test`
 
 # Work Cited
 This project used the following websites

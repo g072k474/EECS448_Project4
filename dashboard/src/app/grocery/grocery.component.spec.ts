@@ -9,7 +9,8 @@ describe('GroceryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GroceryComponent ]
+      declarations: [ GroceryComponent ],
+      providers: [{provide: GroceryListService, useClass: GroceryListService}]
     })
     .compileComponents();
   });
@@ -25,18 +26,22 @@ describe('GroceryComponent', () => {
   });
 
   it('should call remove_item method on init', () => {
-    // set up spies, could also call a fake method in case you don't want the API call to go through
-    //const ListServiceSpy = spyOn(GroceryListService, 'updateCost').and.callThrough();
-    const GrocerySpy = spyOn(component, 'remove_item').and.callThrough();
-  
+    // set up spies, 
+    const GrocerySpy1 = spyOn(component, 'remove_item').and.callThrough();
+    const GrocerySpy2 = spyOn(component, 'updateCost').and.callThrough();
+    
     // make sure they haven't been called yet
-    //expect(ListServiceSpy).not.toHaveBeenCalled();
-    expect(GrocerySpy).not.toHaveBeenCalled();
+    expect(GrocerySpy1).not.toHaveBeenCalled();
+    expect(GrocerySpy2).not.toHaveBeenCalled();
   
-    // depending on how your component is set up, fixture.detectChanges() might be enough
+    //call functionss
     component.ngOnInit();
-  
-    //expect(ListServiceSpy).toHaveBeenCalledTimes(1);
-    expect(GrocerySpy).toHaveBeenCalledTimes(1);
+    component.remove_item();
+    
+    //Check spies
+    expect(GrocerySpy2).toHaveBeenCalledTimes(1);
+    expect(GrocerySpy1).toHaveBeenCalledTimes(1);
   });
+
+
 });

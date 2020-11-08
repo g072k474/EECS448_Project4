@@ -49,6 +49,10 @@ export class WeightComponent implements OnInit {
     for(var i = 0; i < 6; i++){
       this.array[i] = 0;
     }
+    this.useI = false;
+    this.useG = false;
+    this.useC = false;
+    this.useH = false;
     this.wvalid = false;
     this.count = 0;
     this.iniWeight = 0;//the users initial weight
@@ -88,7 +92,7 @@ export class WeightComponent implements OnInit {
     this.updateChartData();
     document.getElementById('differ').innerText = 'Weight Difference: ' + this.differ;
     if(this.remaining === 0 ){
-      alert("Congrats, you have reach the goal!");
+      alert("Congrats, you have reached the goal!");
     }
     //not reach the goal
     else{
@@ -102,11 +106,10 @@ export class WeightComponent implements OnInit {
       }
       else if(this.remaining < 0)
       {
-        alert("You have gone past your goal Congratulations");
+        alert("You have gone past your goal! Congratulations!");
       }
       else{
-        alert("Your weight has not changed.");
-        alert("You still need to lose " + this.remaining + " lbs");
+        alert("Your weight has not changed.\nYou still need to lose " + this.remaining + " lbs");
       }
     }
    }
@@ -134,17 +137,15 @@ export class WeightComponent implements OnInit {
     this.bmi=(this.changedWeight/(this.height*this.height))*703;
     if(this.bmi>25.0)
     {
-     alert("You are Overweight!");
-     alert("Recommendations: Eat healthier foods and exercise");
+     alert("You are Overweight!\nRecommendations: Eat healthier foods and exercise");
     }
     else if(this.bmi<18.5)
     {
-      alert("You are underweight!");
-      alert("Recommendations: Try eating alittle more");
+      alert("You are underweight!\n Recommendations: Try eating a little more");
     }
     else
     {
-      alert("Your BMI Index is good Great Job!");
+      alert("Your BMI Index is good! Great job!");
     }
    }
   }
@@ -161,7 +162,7 @@ export class WeightComponent implements OnInit {
  {
    if(event.target.value<0){
     document.getElementById("ini").innerText="Initial Weight: Invalid";
-     alert("How could you have a weight less than 0? Please Try Again")
+     alert("How could you have a weight less than 0? Please try again")
      this.goodValueI=false;
      this.useI=true;
    }
@@ -187,7 +188,7 @@ export class WeightComponent implements OnInit {
  {
    if(event.target.value<0){
     document.getElementById("goalW").innerText="Goal Weight: Invalid";
-    alert("How do you expect to get to a weight below 0...or even at 0? Please Try Again")
+    alert("How do you expect to get to a weight below 0...or even at 0? Please try again")
      this.goodValueG=false;
      this.useG=true;
    }
@@ -211,7 +212,7 @@ export class WeightComponent implements OnInit {
  {
   if(event.target.value<0){
     document.getElementById("currentW").innerText="Current Weight: Invalid";
-    alert("How did you manage to get a negative weight your clearly lying? Please Try Again")
+    alert("How did you manage to get a negative weight? You're clearly lying. Please try again")
      this.goodValueC=false;
      this.useC=true;
    }
@@ -235,7 +236,7 @@ export class WeightComponent implements OnInit {
  {
   if(event.target.value<0){
     document.getElementById("height").innerText="Height: Invalid";
-    alert("What would being a negative height be? Please Try Again")
+    alert("What would being a negative height be? Please try again")
      this.goodValueH=false;
      this.useH=true;
    }

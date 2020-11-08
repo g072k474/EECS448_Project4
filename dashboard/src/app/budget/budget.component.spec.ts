@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { FormGroup, ReactiveFormsModule, FormsModule, FormBuilder } from '@angular/forms';
+import { CountUpDirective } from '@swimlane/ngx-charts';
 import { BudgetComponent } from './budget.component';
 
 describe('BudgetComponent', () => {
@@ -30,7 +31,6 @@ describe('BudgetComponent', () => {
   it('should show amount is 500', () =>{
     spyOn(component, 'updateAmount');
     component.updateAmount(500);
-    console.log(fixture.detectChanges(component.amount === 500));
     expect(component.updateAmount).toHaveBeenCalledWith(500);
   });
 
@@ -41,9 +41,11 @@ describe('BudgetComponent', () => {
   });
 
   it('should show income is 250', () =>{
-    spyOn(component, 'updateIncome');
+    const spy1 = spyOn(component, 'updateIncome').and.callThrough();
+    const spy2 = spyOn(component, 'updateIncomeData').and.callThrough();
     component.updateIncome(250);
-    expect(component.updateIncome).toHaveBeenCalledWith(250);
+    expect(spy1).toHaveBeenCalledWith(250);
+    expect(spy2).toHaveBeenCalled();
   });
 
   it('should show ctemp is Rent', () =>{
