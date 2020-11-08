@@ -5,9 +5,9 @@ import { Injectable } from '@angular/core';
 })
 export class GroceryItemService {
   name: string;
-  category?: string;
-  price?: number;
-  organic?:string;
+  category: string;
+  price: number;
+  organic:string;
   quantity: number = 1;
 
   /** Constructor: Creates and initilaze the class 
@@ -17,7 +17,8 @@ export class GroceryItemService {
  * @throws None
  * @return None
  */
-  constructor(name: string = "item", category: string = " ", price = 0, organic = "No", quantity: number = 1){
+  constructor(name: string = "item", category: string = " ", price = 0, 
+  organic = "No", quantity: number = 1){
     this.name = name;
     this.category = category;
     this.price = price;

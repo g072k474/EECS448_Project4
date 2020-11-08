@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Optional } from '@angular/core';
 import {GroceryItemService} from './grocery-item.service';
 
 @Injectable({
@@ -18,7 +18,7 @@ export class GroceryListService {
  * @throws None
  * @return None
  */
-  constructor(name) { 
+  constructor(@Optional() name: string) { 
     this.label = name;
     this.date = new Date(); // pick the current system date
     this.items = []; // initilize an empty list of groceries
