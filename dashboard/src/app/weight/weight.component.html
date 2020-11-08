@@ -9,8 +9,8 @@
         <p>Height <input type="number" min="0" (keyup)="updateH($event)" id="heightIn" size="3" />in</p>
     </ul>
 
-    <button (click)="doSubmit()">Track Weight</button>
-    <button (click)="BMI()">Calculate BMI</button>
+    <button (click)="doSubmit()" id="weightT">Track Weight</button>
+    <button (click)="BMI()" id="BMI">Calculate BMI</button>
     <div class="Initial" id="ini">Initial Weight: 0</div>
     <div class="goal" id="goalW">Goal Weight: 0</div>
     <div class="Current" id="currentW">Current Weight: 0</div>
