@@ -38,9 +38,7 @@ export class GroceryComponent implements OnInit {
     this.lists = []; // list of groceries to be used as a temporary container
     this.hideShowFields(true); // Hide all fields for edition (grocery list and items)
 
-    this.lists.forEach((item, index) => {
-      this.lists[index].updateCost();
-    })
+    this.updateCost();
 
   }
 
