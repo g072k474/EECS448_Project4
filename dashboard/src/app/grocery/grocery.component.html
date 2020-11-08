@@ -6,72 +6,73 @@
 		<legend>Groceries List</legend>
 		<div>
 			<h4>Date: {{date | date:"fullDate"}}  </h4> 
-			<h4>Total cost: {{total_Cost | currency}}</h4>
+			<!--<h4>Total cost: {{total_Cost | currency}}</h4>-->
 		</div>
-		<!--<div *ngFor="let list of items; let i = index">
+		<div *ngFor="let list of lists; index as i">
 			<div class="accordion" (click)= "accOpen()">
-				<span>{{item.label}}  </span> 
-				<span><strong>Date: </strong>{{list.date}}  </span> 
-				<span><strong>Total Cost:</strong> {{list.total_Cost | currency}}</span>
-			</div>-->
-
-		<div id="items-view">
-			<div *ngFor="let item of items; let j = index" hide="!item.isActive">
-				<span>{{item.name}}  </span>
-				<span><strong>Category:</strong> {{item.category}}  </span>
-				<span><strong>Organic:</strong> {{item.organic}}  </span>
-				<span><strong>Price:</strong> {{item.price}}  </span>
-				<span><strong>Quantity:</strong> {{item.quantity}}  </span>
+				<span>{{list.label}}  </span> 
+				<span><strong>Date: </strong>{{list.date | date:"fullDate"}}  </span> 
+				<span><strong>Total Cost:</strong> {{list.list_Cost | currency}}</span>
+			</div>
+		
+			<div class="accordion-content">
+				<div *ngFor="let item of list.items; let j = index" hide="!item.isActive">
+					<span>{{item.name}}</span>
+					<span><strong>Category: </strong>{{item.category}}</span>
+					<span><strong>Organic: </strong>{{item.organic}}</span>
+					<span><strong>Price: </strong>{{item.price}}</span>
+					<span><strong>Quantity: </strong>{{item.quantity}}</span>
+				</div>
 			</div>
 		</div>
 	</fieldset>
 </section>
 
-<!--
-<section id="controls">
-	<div id="btns-item">
-		<button (click)="switchEditionView('item')">Modify items</button>
-		<button (click)="add_item">Add item</button>
-		<button>Remove item</button>
-		<button>Edit item</button>
+<section id="edition-selection">
+	<div id="item-edit-btns">
+		<label for="item-edit-select">Modify items</label><br>
+		<select name="item-edit-select" id="item-edit-select" (change)= "flipView('item')">
+			<option value="default">choose Action</option>
+			<option value="Add">Add a new item</option>
+			<option value="Edit">Edit an item</option>
+			<option value="Remove"> Remove an item</option>
+		</select>
 	</div>
-	<div id="btns-list">
-		<button (click)="switchEditionView('list')">Modify list</button>
-		<button>Add list</button>
-		<button>Remove list</button>
-		<button>Edit list</button>
+	<div id="grocery-edit-btns">
+		<label for="grcoery-edit-select">Modify Grocery lists</label><br>
+		<select name="grocery-edit-select" id="grocery-edit-select" (change)="flipView()">
+			<option value="default" selected>choose Action</option>
+			<option value="Add-G">Add a new list</option>
+			<option value="Remove-G">Remove a list</option>
+			<option value="Change-G">Change a list's name</option>
+		</select>
 	</div>
-</section>-->
+</section>
+
+<section id="action-screen">
 
 <section id="modify-item">
 	<fieldset id="add-item">
 		<legend>Adding Item(s)</legend>
 		<div>
-			<!--<label for="listName">List Name: </label>
-			<input type="text" name="listName" id="listName1">-->
 			<p>
+				<label for="listName">List Name: </label>
+				<input type="text" name="listName" id="listName1" title="list name">
 				<label for="itemName">Item's Name: </label>
-				<input type="text" name="itemName" id="itemName1"><br>
+				<input type="text" name="itemName" id="itemName1" title="item name"><br>
 				<label for="itemCategory">Category: </label>
-				<input type="text" name="itemCategory" id="itemCategory1">
+				<input type="text" name="itemCategory" title="category" id="itemCategory1">
+			</p>
+			<p>
 				<label for="itemOrganic">Organic (yes/no): </label>
-				<select type="text" name="itemOrganic" value="Yes" id="itemOrganic1">
+				<select type="text" name="itemOrganic" value="Yes" id="itemOrganic1" title="organic">
 					<option value="Yes">Yes</option>
 					<option value="No">No</option>
 				</select>
-				<!-- <input type="radio" style="margin-right: 5px;" name="itemOrganic" value="Yes" id="itemOrganic1">
-				<label for="itemOrganic">Yes</label>
-				<span> -- </span>
-				<input type="radio" style="margin-right: 5px;" name="itemOrganic" value="No" id="itemOrganic1">
-				<label for="itemOrganic">No</label>
-				 -->
-				
-			</p>
-			<p>
 				<label for="itemPrice">Price: </label>
-				<input type="number" min="0.01" name="itemPrice" id="itemPrice1">
+				<input type="number" min="0.01" name="itemPrice" id="itemPrice1" title="number">
 				<label for="itemQuantity">Quantity: </label>
-				<input type="number" name="itemQuantity" min="1" id="itemQuantity1">
+				<input type="number" name="itemQuantity" min="1" id="itemQuantity1" title="number">
 			</p>
 		</div>
 		<button (click)="add_item()">Submit</button>
@@ -80,11 +81,10 @@
 	<fieldset id="remove-item">
 		<legend>Removing Item(s)</legend>
 		<div>
-			<!--<label for="listName">List Name: </label>
-			<input type="text" name="listName" id="listName2">-->
+			<label for="listName">List Name: </label>
+			<input type="text" name="listName" id="listName2" title="list name">
 			<label for="itemName">Item's Name: </label>
-			<input type="text" name="itemName" id="itemName2">
-		
+			<input type="text" name="itemName" id="itemName2" title="item name">
 			<button (click)="remove_item()">Submit</button>
 		</div>
 	</fieldset>
@@ -92,36 +92,55 @@
 	<fieldset id="edit-item">
 		<legend>Editing Item(s)</legend>
 		<div>
-			<!--<label for="listName">List Name: </label>
-			<input type="text" name="listName" id="listName3">-->
+			<label for="listName">List Name: </label>
+			<input type="text" name="listName" id="listName3" title="list name">
 			<label for="itemName">Item's Name: </label>
-			<input type="text" name="itemName" id="itemName3"><br>
+			<input type="text" name="itemName" id="itemName3" title="item name"><br>
 			<label for="itemField">Field to change: </label>
-			<input type="text" name="itemField" id="itemField">
+			<select type="text" name="itemField" id="itemField" (change)="isOrganic()">
+				<option value="name">Name</option>
+				<option value="category">Category</option>
+				<option value="organic">Organic</option>
+				<option value="price">Price</option>
+				<option value="quantity">Quantity</option>
+			</select>
 			<label for="fieldValue">New Value: </label>
-			<input type="text" name="fieldValue" id="fieldValue">
+			<input type="text" name="fieldValue" id="fieldValue" (click)="isOrganic()" title="organic">
 			<button (click)="edit()">Submit</button>
 		</div>
 		
 	</fieldset>
 </section>
 
-<!--
-<section id= "modify-list">
+<section id="modify-list">
 	<fieldset id="add-list">
 		<legend>Adding a Grocery list</legend>
 		<div>
-			<label for="itemName">Name: </label>
-			<input type="text" name="itemName" id="itemName">
+			<label for="listName">Name: </label>
+			<input type="text" name="listName" id="listToAdd" title="list name">
+			<button (click)="list_add()">Submit</button>
 		</div>
 	</fieldset>
 
 	<fieldset id="remove-list">
 		<legend>Removing a Grocery list</legend>
+		<div>
+			<label for="listName">Name: </label>
+			<input type="text" name="listName" id="lisToRemove" title="list name">
+			<button (click)="list_remove()">Submit</button>
+		</div>
 	</fieldset>
 
 	<fieldset id="edit-list">
 		<legend>Editing a Grocery list</legend>
+		<div>
+			<label for="listName">Current name: </label>
+			<input type="text" name="listName" id="listNameOld" title="list name">
+			<label for="listName">New name: </label>
+			<input type="text" name="listName" id="listNameNew" title="list name">
+			<button (click)="list_label_edit()">Submit</button>
+		</div>
 	</fieldset>
-</section>-->
+</section>
 
+</section>

@@ -5,12 +5,10 @@ import { Injectable } from '@angular/core';
 })
 export class GroceryItemService {
   name: string;
-  category?: string;
-  price?: number;
-  organic?:string;
+  category: string;
+  price: number;
+  organic:string;
   quantity: number = 1;
-
-
 
   /** Constructor: Creates and initilaze the class 
  * @pre None
@@ -19,7 +17,8 @@ export class GroceryItemService {
  * @throws None
  * @return None
  */
-  constructor(name: string = "item", category: string = " ", price = 0, organic = "No", quantity: number = 1){
+  constructor(name: string = "item", category: string = " ", price = 0, 
+  organic = "No", quantity: number = 1){
     this.name = name;
     this.category = category;
     this.price = price;
@@ -37,20 +36,26 @@ export class GroceryItemService {
 * @return None
 */
   edit_item(field, newVal):void{
-    if('name' == field){
+    console.log("edit function");
+    if('name' === field){
       this.name  = newVal;
+      console.log("edit name " + this.name);
 
-   }else if(field == 'category'){
+   }else if(field === 'category'){
     this.category = newVal;
+    console.log("edit name " + this.name);
 
-   }else if(field  == 'price'){
+   }else if(field  === 'price'){
     this.price = newVal;
+    console.log("edit name " + this.name);
 
-   } else if(field  = 'organic'){
+   } else if(field  === 'organic'){
       this.organic = newVal;
+      console.log("edit name " + this.name);
       
-   }else if(field == 'quantity'){
-    this.quantity = newVal
+   }else if(field === 'quantity'){
+    this.quantity = newVal;
+    console.log("Quantity Change " + this.quantity);
    }
     
   }

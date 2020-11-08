@@ -23,12 +23,13 @@ input {
 	color: #444;
 	cursor: pointer;
 	padding: 18px;
-	width: 90%;
+	width: 100%;
 	transition: 0.2s;
 }
 
 .accordion-content{
-	padding: 0 18px;
+	width: 100%;
+	padding: 0 1px;
 	background-color: #fff;
 	max-height: 0;
 	overflow: hidden;
@@ -55,13 +56,17 @@ input {
 	margin-right: 1%;
 }
 
-.accordion-content div span, #items-view span{
+.accordion-content div span{
 	display: table-cell;
-	width: 23%;
+	width: 21.8%;
 }
 
-.accordion-content div{
-	display: table-row;
+label{
+	margin: 2% 1% 0 2%;
+}
+
+#modify-item fieldset{
+	margin-top: 3%;
 }
 
 fieldset{
@@ -71,18 +76,7 @@ fieldset{
 	margin-left: 2rem;
 }
 
-#items-view span{
-	/*border-right: 2px solid blue;*/
 
-}
-
-#modify-item, #modify-item fieldset{
-	margin-top: 2%;
-}
-
-#modify-item fieldset input{
-	margin: 1% 2% 1% 0; 
-}
 button{
 	float: right;
 	margin-right: 3%;
@@ -102,33 +96,21 @@ button:hover{
 button:active{
 	position: relative;
 }
-/*input:valid{
-	background-color: green;
-}
-input:invalid{
-	background-color: red;
-}
-*/
-/*input + span {
-  position: relative;
+
+#action-screen{
+	padding: 5% 15%;
+	position: relative;
 }
 
-input + span::before {
-  position: absolute;
-  right: -20px;
-  top: 5px;
+#action-screen fieldset{
+	position: absolute;
+	top: 2%;
+	left: 3%;
 }
-
-input:invalid {
-  border: 2px solid red;
+#edition-selection{
+	display: flex;
+	margin: 3% 20%;
 }
-
-input:invalid + span::before {
-  content: '✖';
-  color: red;
+#edition-selection div{
+	margin: auto;
 }
-
-input:valid + span::before {
-  content: '✓';
-  color: green;
-}*/
