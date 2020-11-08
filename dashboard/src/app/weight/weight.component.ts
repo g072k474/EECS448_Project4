@@ -172,7 +172,6 @@ export class WeightComponent implements OnInit {
    this.goodValueI=true;
    this.useI=true;
    this.array[0] = this.iniWeight; // data for chart
-   return this.iniWeight;
    }
  }
 

@@ -3,21 +3,43 @@
 
 <div class="List">
     <ul>
-        <p>Initial Weight <input type="number" min="0" (keyup)="updateIni($event)" id="intWeight" size="3" />lb</p>
-        <p>Goal Weight <input type="number" min="0" (keyup)="updateG($event)" id="goalWeight" size="3" />lb</p>
-        <p>Current Weight <input type="number" min="0" (keyup)="updateC($event)" id="weightIn" size="3" />lb</p>
-        <p>Height <input type="number" min="0" (keyup)="updateH($event)" id="heightIn" size="3" />in</p>
+        <div class = "row">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+                <p>Weight &nbsp;<input type="number" min="0" (keyup)="updateIni($event)" id="intWeight" size="3" /> &nbsp;lb</p>
+            </div>
+            <div class="col-md-4">
+                <p>Goal Weight  &nbsp;<input type="number" min="0" (keyup)="updateG($event)" id="goalWeight" size="3" /> &nbsp;lb</p>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class = "row">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+                <p>Current Weight  &nbsp;<input type="number" min="0" (keyup)="updateC($event)" id="weightIn" size="3" /> &nbsp;lb</p>
+            </div>
+            <div class="col-md-4">
+                <p>Height  &nbsp;<input type="number" min="0" (keyup)="updateH($event)" id="heightIn" size="3" /> &nbsp;in</p>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
     </ul>
-
-    <button (click)="doSubmit()" id="weightT">Track Weight</button>
-    <button (click)="BMI()" id="BMI">Calculate BMI</button>
-    <div class="Initial" id="ini">Initial Weight: 0</div>
-    <div class="goal" id="goalW">Goal Weight: 0</div>
-    <div class="Current" id="currentW">Current Weight: 0</div>
-    <div class="difference" id="differ">Weight Difference: 0</div>
-    <div class="Height" id="height">Height: 0</div>
+    <div class = buttons>
+        <button (click)="doSubmit()">Track Weight</button>
+        <button (click)="BMI()">Calculate BMI</button>
+    </div>
+    <br>
+    <div class = "values">
+        <div class="Initial" id="ini">Initial Weight: 0</div>
+        <div class="goal" id="goalW">Goal Weight: 0</div>
+        <div class="Current" id="currentW">Current Weight: 0</div>
+        <div class="difference" id="differ">Weight Difference: 0</div>
+        <div class="Height" id="height">Height: 0</div>
+    </div>
     <div class="Chart" id="chart" *ngIf = 'wvalid'>
-        <p>Progress of  Your Weight</p>
+        <br>
+        <h3>Progress of  Your Weight</h3>
+        <br>
         <div class="row">
             <div class="col-lg-4"></div>
             <div class="col-lg-6">
