@@ -68,5 +68,4 @@ describe('BudgetComponent', () => {
     component.addSavings(5);
     expect(component.addSavings).toHaveBeenCalledWith(5);
   });
-
 });
