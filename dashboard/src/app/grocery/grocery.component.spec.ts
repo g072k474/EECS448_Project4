@@ -26,17 +26,17 @@ describe('GroceryComponent', () => {
 
   it('should call remove_item method on init', () => {
     // set up spies, could also call a fake method in case you don't want the API call to go through
-    const ListServiceSpy = spyOn(GroceryListService, 'updateCost').and.callThrough();
+    //const ListServiceSpy = spyOn(GroceryListService, 'updateCost').and.callThrough();
     const GrocerySpy = spyOn(component, 'remove_item').and.callThrough();
   
     // make sure they haven't been called yet
-    expect(ListServiceSpy).not.toHaveBeenCalled();
+    //expect(ListServiceSpy).not.toHaveBeenCalled();
     expect(GrocerySpy).not.toHaveBeenCalled();
   
     // depending on how your component is set up, fixture.detectChanges() might be enough
     component.ngOnInit();
   
-    expect(ListServiceSpy).toHaveBeenCalledTimes(1);
+    //expect(ListServiceSpy).toHaveBeenCalledTimes(1);
     expect(GrocerySpy).toHaveBeenCalledTimes(1);
   });
 });

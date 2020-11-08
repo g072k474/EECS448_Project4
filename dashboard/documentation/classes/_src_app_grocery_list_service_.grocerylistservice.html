@@ -92,17 +92,17 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_src_app_grocery_list_service_.grocerylistservice.html#date" class="tsd-kind-icon">date</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_src_app_grocery_list_service_.grocerylistservice.html#items" class="tsd-kind-icon">items</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_src_app_grocery_list_service_.grocerylistservice.html#l_index" class="tsd-kind-icon">l_<wbr><wbr>Index</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_src_app_grocery_list_service_.grocerylistservice.html#label" class="tsd-kind-icon">label</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_src_app_grocery_list_service_.grocerylistservice.html#total_cost" class="tsd-kind-icon">total_<wbr><wbr>Cost</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_src_app_grocery_list_service_.grocerylistservice.html#list_cost" class="tsd-kind-icon">list_<wbr><wbr>Cost</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_src_app_grocery_list_service_.grocerylistservice.html#add_item" class="tsd-kind-icon">add_<wbr><wbr>Item</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_src_app_grocery_list_service_.grocerylistservice.html#add_item" class="tsd-kind-icon">add_<wbr>item</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_src_app_grocery_list_service_.grocerylistservice.html#edit_item" class="tsd-kind-icon">edit_<wbr>item</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_src_app_grocery_list_service_.grocerylistservice.html#remove_item" class="tsd-kind-icon">remove_<wbr><wbr>Item</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_src_app_grocery_list_service_.grocerylistservice.html#remove_item" class="tsd-kind-icon">remove_<wbr>item</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_src_app_grocery_list_service_.grocerylistservice.html#updatecost" class="tsd-kind-icon">update<wbr>Cost</a></li>
 							</ul>
 						</section>
 					</div>
@@ -114,28 +114,39 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Grocery<wbr>List<wbr>Service<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, date<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, list<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_src_app_grocery_list_service_.grocerylistservice.html" class="tsd-signature-type">GroceryListService</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Grocery<wbr>List<wbr>Service<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_src_app_grocery_list_service_.grocerylistservice.html" class="tsd-signature-type">GroceryListService</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jrhaxton/EECS448_Project3/blob/f97b892/dashboard/src/app/grocery-list.service.ts#L12">src/app/grocery-list.service.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/g072k474/EECS448_Project4/blob/3de3c76d/dashboard/src/app/grocery-list.service.ts#L11">src/app/grocery-list.service.ts:11</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Constructor: Creates and initilaze the class</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>pre</dt>
+									<dd><p>None</p>
+									</dd>
+									<dt>post</dt>
+									<dd><p>Component class created with all its dependencies</p>
+									</dd>
+									<dt>throws</dt>
+									<dd><p>None</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>name: <span class="tsd-signature-type">any</span></h5>
-								</li>
-								<li>
-									<h5>date: <span class="tsd-signature-type">any</span></h5>
-								</li>
-								<li>
-									<h5>list: <span class="tsd-signature-type">any</span></h5>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_src_app_grocery_list_service_.grocerylistservice.html" class="tsd-signature-type">GroceryListService</a></h4>
+							<p>None</p>
 						</li>
 					</ul>
 				</section>
@@ -148,7 +159,7 @@
 					<div class="tsd-signature tsd-kind-icon">date<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Date</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jrhaxton/EECS448_Project3/blob/f97b892/dashboard/src/app/grocery-list.service.ts#L10">src/app/grocery-list.service.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/g072k474/EECS448_Project4/blob/3de3c76d/dashboard/src/app/grocery-list.service.ts#L9">src/app/grocery-list.service.ts:9</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -158,17 +169,7 @@
 					<div class="tsd-signature tsd-kind-icon">items<span class="tsd-signature-symbol">:</span> <a href="_src_app_grocery_item_service_.groceryitemservice.html" class="tsd-signature-type">GroceryItemService</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jrhaxton/EECS448_Project3/blob/f97b892/dashboard/src/app/grocery-list.service.ts#L12">src/app/grocery-list.service.ts:12</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="l_index" class="tsd-anchor"></a>
-					<h3>l_<wbr><wbr>Index</h3>
-					<div class="tsd-signature tsd-kind-icon">l_<wbr><wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 1</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/jrhaxton/EECS448_Project3/blob/f97b892/dashboard/src/app/grocery-list.service.ts#L9">src/app/grocery-list.service.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/g072k474/EECS448_Project4/blob/3de3c76d/dashboard/src/app/grocery-list.service.ts#L11">src/app/grocery-list.service.ts:11</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -178,17 +179,17 @@
 					<div class="tsd-signature tsd-kind-icon">label<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jrhaxton/EECS448_Project3/blob/f97b892/dashboard/src/app/grocery-list.service.ts#L8">src/app/grocery-list.service.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/g072k474/EECS448_Project4/blob/3de3c76d/dashboard/src/app/grocery-list.service.ts#L8">src/app/grocery-list.service.ts:8</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="total_cost" class="tsd-anchor"></a>
-					<h3>total_<wbr><wbr>Cost</h3>
-					<div class="tsd-signature tsd-kind-icon">total_<wbr><wbr>Cost<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
+					<a name="list_cost" class="tsd-anchor"></a>
+					<h3>list_<wbr><wbr>Cost</h3>
+					<div class="tsd-signature tsd-kind-icon">list_<wbr><wbr>Cost<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jrhaxton/EECS448_Project3/blob/f97b892/dashboard/src/app/grocery-list.service.ts#L11">src/app/grocery-list.service.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/g072k474/EECS448_Project4/blob/3de3c76d/dashboard/src/app/grocery-list.service.ts#L10">src/app/grocery-list.service.ts:10</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -197,17 +198,33 @@
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="add_item" class="tsd-anchor"></a>
-					<h3>add_<wbr><wbr>Item</h3>
+					<h3>add_<wbr>item</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">add_<wbr><wbr>Item<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, price<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, organic<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, quantity<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, category<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">add_<wbr>item<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, price<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, organic<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, quantity<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, category<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jrhaxton/EECS448_Project3/blob/f97b892/dashboard/src/app/grocery-list.service.ts#L28">src/app/grocery-list.service.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/g072k474/EECS448_Project4/blob/3de3c76d/dashboard/src/app/grocery-list.service.ts#L54">src/app/grocery-list.service.ts:54</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>add_item: creates a new item and adds it to the array of items</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>pre</dt>
+									<dd><p>None</p>
+									</dd>
+									<dt>post</dt>
+									<dd><p>array of items updated with a new entry</p>
+									</dd>
+									<dt>throws</dt>
+									<dd><p>None</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -224,9 +241,13 @@
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> category: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>of the item</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<p>None</p>
 						</li>
 					</ul>
 				</section>
@@ -234,48 +255,123 @@
 					<a name="edit_item" class="tsd-anchor"></a>
 					<h3>edit_<wbr>item</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">edit_<wbr>item<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, newItem<span class="tsd-signature-symbol">: </span><a href="_src_app_grocery_item_service_.groceryitemservice.html" class="tsd-signature-type">GroceryItemService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">edit_<wbr>item<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, field<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, newVal<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jrhaxton/EECS448_Project3/blob/f97b892/dashboard/src/app/grocery-list.service.ts#L41">src/app/grocery-list.service.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/g072k474/EECS448_Project4/blob/3de3c76d/dashboard/src/app/grocery-list.service.ts#L89">src/app/grocery-list.service.ts:89</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>edit_item: this functions updates a field of the item with provided value.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>pre</dt>
+									<dd><p>None</p>
+									</dd>
+									<dt>post</dt>
+									<dd><p>None</p>
+									</dd>
+									<dt>throws</dt>
+									<dd><p>None</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
 								</li>
 								<li>
-									<h5>newItem: <a href="_src_app_grocery_item_service_.groceryitemservice.html" class="tsd-signature-type">GroceryItemService</a></h5>
+									<h5>field: <span class="tsd-signature-type">any</span></h5>
+								</li>
+								<li>
+									<h5>newVal: <span class="tsd-signature-type">any</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<p>None</p>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="remove_item" class="tsd-anchor"></a>
-					<h3>remove_<wbr><wbr>Item</h3>
+					<h3>remove_<wbr>item</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">remove_<wbr><wbr>Item<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">remove_<wbr>item<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jrhaxton/EECS448_Project3/blob/f97b892/dashboard/src/app/grocery-list.service.ts#L35">src/app/grocery-list.service.ts:35</a></li>
+									<li>Defined in <a href="https://github.com/g072k474/EECS448_Project4/blob/3de3c76d/dashboard/src/app/grocery-list.service.ts#L66">src/app/grocery-list.service.ts:66</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>remove_item: remove an item with the provided name</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>pre</dt>
+									<dd><p>the name exists in the array of items</p>
+									</dd>
+									<dt>post</dt>
+									<dd><p>None</p>
+									</dd>
+									<dt>throws</dt>
+									<dd><p>None</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>of the item to remove</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<p>None</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="updatecost" class="tsd-anchor"></a>
+					<h3>update<wbr>Cost</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">update<wbr>Cost<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/g072k474/EECS448_Project4/blob/3de3c76d/dashboard/src/app/grocery-list.service.ts#L36">src/app/grocery-list.service.ts:36</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>updateCost: calculates the total of all prices times
+									the quantity for each item</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>pre</dt>
+									<dd><p>None</p>
+									</dd>
+									<dt>post</dt>
+									<dd><p>the Total cost of the list is updated</p>
+									</dd>
+									<dt>throws</dt>
+									<dd><p>None</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<p>None</p>
 						</li>
 					</ul>
 				</section>
@@ -336,6 +432,12 @@
 						<a href="../modules/_src_app_header_header_component_spec_.html">&quot;src/app/header/header.component.spec&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
+						<a href="../modules/_src_app_home_home_component_.html">&quot;src/app/home/home.component&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_src_app_home_home_component_spec_.html">&quot;src/app/home/home.component.spec&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
 						<a href="../modules/_src_app_weight_weight_component_.html">&quot;src/app/weight/weight.component&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -375,22 +477,22 @@
 								<a href="_src_app_grocery_list_service_.grocerylistservice.html#items" class="tsd-kind-icon">items</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_src_app_grocery_list_service_.grocerylistservice.html#l_index" class="tsd-kind-icon">l_<wbr><wbr>Index</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_src_app_grocery_list_service_.grocerylistservice.html#label" class="tsd-kind-icon">label</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_src_app_grocery_list_service_.grocerylistservice.html#total_cost" class="tsd-kind-icon">total_<wbr><wbr>Cost</a>
+								<a href="_src_app_grocery_list_service_.grocerylistservice.html#list_cost" class="tsd-kind-icon">list_<wbr><wbr>Cost</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_src_app_grocery_list_service_.grocerylistservice.html#add_item" class="tsd-kind-icon">add_<wbr><wbr>Item</a>
+								<a href="_src_app_grocery_list_service_.grocerylistservice.html#add_item" class="tsd-kind-icon">add_<wbr>item</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_src_app_grocery_list_service_.grocerylistservice.html#edit_item" class="tsd-kind-icon">edit_<wbr>item</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_src_app_grocery_list_service_.grocerylistservice.html#remove_item" class="tsd-kind-icon">remove_<wbr><wbr>Item</a>
+								<a href="_src_app_grocery_list_service_.grocerylistservice.html#remove_item" class="tsd-kind-icon">remove_<wbr>item</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_src_app_grocery_list_service_.grocerylistservice.html#updatecost" class="tsd-kind-icon">update<wbr>Cost</a>
 							</li>
 						</ul>
 					</li>

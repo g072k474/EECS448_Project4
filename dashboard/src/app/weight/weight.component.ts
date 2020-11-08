@@ -61,7 +61,6 @@ export class WeightComponent implements OnInit {
     }
   }
 
-
   /** doSubmit: Calculates information provided
   * Calculates information provided by using to see where they are from the goal
   * @pre none
@@ -278,55 +277,10 @@ export class WeightComponent implements OnInit {
     console.log(this.array[0]);
     console.log(this.array[this.count]);
     console.log(this.count);
-/*
-    if(this.getGoal){
-      this.weightData = [
-        {name: "Initial Weight", value: this.iniWeight},
-        {name: "Recent Weight", value: this.changedWeight},
-        {name: "Goal Weight", value: this.goalWeight}
-      ];
-    }
-    else{
-      this.weightData = [
-        {name: "Initial Weight", value: this.iniWeight},
-        {name: "Goal Weight", value: this.goalWeight}
-      ];
-    }
-  }*/
   this.weightData = [{
     'name': 'Your Weight Change',
     'series' : this.updateData()
   }];
-  /*this.weightData = [{
-    'name': 'your weight change',
-    'series' : [
-    {
-    'name': 'iniWeight',
-    'value': this.array[0]
-    },
-    {
-      'name': 'current weight 1',
-      'value': this.array[1]
-      },
-      {
-        'name': 'current weight 2',
-        'value': this.array[2]
-        },
-        {
-          'name': 'current weight 3',
-          'value': this.array[3]
-          },
-          {
-            'name': 'current weight 4',
-            'value': this.array[4]
-            },
-            {
-              'name': 'current weight 5',
-              'value': this.array[5]
-              }
-  ]
-}
-  ]*/
 }
 
 }
