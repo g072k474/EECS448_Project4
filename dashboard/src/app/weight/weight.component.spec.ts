@@ -30,6 +30,7 @@ describe('updateIni' , function(){
     component.updateIni(100);
     expect(component.updateIni).toHaveBeenCalledWith(100);
   });
+
 });
 
 describe('updateG', function(){

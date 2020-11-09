@@ -65,7 +65,6 @@ export class WeightComponent implements OnInit {
     }
   }
 
-
   /** doSubmit: Calculates information provided
   * Calculates information provided by using to see where they are from the goal
   * @pre none
@@ -86,6 +85,7 @@ export class WeightComponent implements OnInit {
       alert("Please fix your invalid values");
     }
     else{
+    console.log("doSubmit() is work; ");
     this.differ = this.changedWeight - this.iniWeight;
     this.remaining = this.changedWeight - this.goalWeight;
     //chart data collection
@@ -135,6 +135,7 @@ export class WeightComponent implements OnInit {
       alert("Please fix your invalid values");
     }
     else{
+    console.log("BMI() is work; ");
     this.bmi=(this.changedWeight/(this.height*this.height))*703;
     if(this.bmi>25.0)
     {
@@ -168,6 +169,7 @@ export class WeightComponent implements OnInit {
      this.useI=true;
    }
    else{
+   console.log("updateIni() is work; ");
    this.iniWeight=event.target.value;
    document.getElementById("ini").innerText="Initial Weight: " + this.iniWeight;
    this.goodValueI=true;
@@ -194,6 +196,7 @@ export class WeightComponent implements OnInit {
      this.useG=true;
    }
    else{
+   console.log("updateG() is work; ");
    this.goalWeight=event.target.value;
    document.getElementById("goalW").innerText="Goal Weight: " + this.goalWeight;
    this.goodValueG=true;
@@ -218,6 +221,7 @@ export class WeightComponent implements OnInit {
      this.useC=true;
    }
    else{
+   console.log("updateC() is work; ");
    this.changedWeight=event.target.value;
    document.getElementById("currentW").innerText="Current Weight: " + this.changedWeight;
    this.goodValueC=true;
@@ -243,6 +247,7 @@ export class WeightComponent implements OnInit {
    }
    else
    {
+   console.log("updateH() is work; ");
    this.height=event.target.value;
    document.getElementById("height").innerText="Height: " + this.height;
    this.goodValueH=true; 
@@ -265,6 +270,7 @@ export class WeightComponent implements OnInit {
      "value": this.array[i]
    });
    return array;
+   console.log("updateData() is work; ");
  }
 
   /** updateChartData: 
@@ -279,55 +285,11 @@ export class WeightComponent implements OnInit {
     console.log(this.array[0]);
     console.log(this.array[this.count]);
     console.log(this.count);
-/*
-    if(this.getGoal){
-      this.weightData = [
-        {name: "Initial Weight", value: this.iniWeight},
-        {name: "Recent Weight", value: this.changedWeight},
-        {name: "Goal Weight", value: this.goalWeight}
-      ];
-    }
-    else{
-      this.weightData = [
-        {name: "Initial Weight", value: this.iniWeight},
-        {name: "Goal Weight", value: this.goalWeight}
-      ];
-    }
-  }*/
+    console.log("updateCharData() is work; ");
   this.weightData = [{
     'name': 'Your Weight Change',
     'series' : this.updateData()
   }];
-  /*this.weightData = [{
-    'name': 'your weight change',
-    'series' : [
-    {
-    'name': 'iniWeight',
-    'value': this.array[0]
-    },
-    {
-      'name': 'current weight 1',
-      'value': this.array[1]
-      },
-      {
-        'name': 'current weight 2',
-        'value': this.array[2]
-        },
-        {
-          'name': 'current weight 3',
-          'value': this.array[3]
-          },
-          {
-            'name': 'current weight 4',
-            'value': this.array[4]
-            },
-            {
-              'name': 'current weight 5',
-              'value': this.array[5]
-              }
-  ]
-}
-  ]*/
 }
 
 }

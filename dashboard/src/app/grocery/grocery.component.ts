@@ -35,7 +35,7 @@ export class GroceryComponent implements OnInit {
    */
   ngOnInit(): void {
     this.date = new Date();
-    this.lists = []; // list of groceries to be used as a temporary container
+    this.lists = []; // initialize to an empty list
     this.hideShowFields(true); // Hide all fields for edition (grocery list and items)
 
     this.updateCost();
@@ -57,13 +57,14 @@ export class GroceryComponent implements OnInit {
     var found: boolean = false;
 
     //Check if the value is valid before going further
-    if(this.validInput("string", "listNameOld"))  
+    if(this.validInput("string", "listNameOld")){  
       this.lists.forEach((item, index) => {
         if(item.label === listName){
           found = true;
           item.label = newName;
         }
       })
+    }
       //Tell the user if the name entred doesn't exist.
       if(!found){
         alert(listName + " Does not Exist.");
